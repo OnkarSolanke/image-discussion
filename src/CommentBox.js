@@ -5,18 +5,13 @@ function CommentBox({ activePin, onComment }) {
 
     const [comment, setComment] = useState('');
 
-    useEffect(() => {
-        console.log(activePin);
-    }, [activePin]);
-
     const handleOnComment = () => {
         var re = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
 
         let extractedEmail = re.exec(comment);
 
-        console.log(extractedEmail);
         if (extractedEmail) {
-            sendEmail(extractedEmail, comment)
+            sendEmail(extractedEmail[0], comment)
         }
         onComment(comment);
         setComment('');

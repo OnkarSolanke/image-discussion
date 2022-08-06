@@ -14,7 +14,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(file);
     if (file) setImg(URL.createObjectURL(file))
   }, [file]);
 
